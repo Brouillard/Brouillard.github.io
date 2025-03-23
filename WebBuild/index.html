@@ -54,10 +54,10 @@
     }
 
     function SendMessageToUnity(data) {
-        if (typeof gameInstance !== 'undefined') {
+     //   if (typeof unityInstance !== 'undefined') {
        //     gameInstance.SendMessage('GameManger', 'OnUserDataReceived', data);
             unityInstance.SendMessage('GameManger', 'OnUserDataReceived', data);
-        }
+     //   }
     }
 </script>
 
