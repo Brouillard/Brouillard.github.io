@@ -11,8 +11,11 @@
         // Функция для получения и отображения никнейма пользователя
         function getTelegramUsername() {
             if (window.Telegram && window.Telegram.WebApp) {
-                const user = window.Telegram.WebApp.initDataUnsafe.user;  // Получаем данные пользователя
+                let user = window.Telegram.WebApp.initDataUnsafe.user;  // Получаем данные пользователя
              //   const username = user ? user.username : 'Неизвестный';  // Если есть username, отображаем его, иначе 'Неизвестный'
+
+                let jsonUser = JSON.stringify(userData);
+                console.log("Telegram User Data:", jsonUser);
 
                 // Отображаем username в элементе с id 'usernameDisplay'
                 document.getElementById('usernameDisplay').textContent = `Никнейм: ${user.username}`;
