@@ -8,37 +8,14 @@
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 
   </head>
-  <body style="text-align: center; padding: 0; border: 0; margin: 0;">
-    <canvas id="unity-canvas" width="720" height="1280" tabindex="-1" style="width: 720px; height: 1280px; background: #231F20"></canvas>
-
-    <script src="Build/WebBuild.loader.js"></script>
+  <body>
     <script>
-      if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
-        // Mobile device style: fill the whole browser client area with the game canvas:
-        var meta = document.createElement('meta');
-        meta.name = 'viewport';
-        meta.content = 'width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, shrink-to-fit=yes';
-        document.getElementsByTagName('head')[0].appendChild(meta);
 
-        var canvas = document.querySelector("#unity-canvas");
-        canvas.style.width = "100%";
-        canvas.style.height = "100%";
-        canvas.style.position = "fixed";
-
-        document.body.style.textAlign = "left";
-      }
-
-      // Создание экземпляра Unity
-      const instance = createUnityInstance(document.querySelector("#unity-canvas"), {
-        dataUrl: "Build/WebBuild.data",
-        frameworkUrl: "Build/WebBuild.framework.js",
-        codeUrl: "Build/WebBuild.wasm",
-        streamingAssetsUrl: "StreamingAssets",
-        companyName: "Brouillard Games",
-        productName: "CONTAINERS_GAME",
-        productVersion: "0.1",
-      }).then((unityInstance) => {
-        // Используйте unityInstance для взаимодействия с экземпляром Unity после его инициализации
+ $(document).ready(function(){
+    $('#MyButton').click(function(){
+       getTelegramUserData();
+    });
+  });
 
       function getTelegramUserData() {
         let userData = window.Telegram.WebApp.initDataUnsafe.user;
@@ -49,17 +26,9 @@
         }
       }
 
-      function SendMessageToUnity(data) {
-        if (typeof unityInstance !== 'undefined' && instance.SendMessage) {
-            unityInstance.SendMessage('GameManager', 'OnUserDataReceived', data);
-        }
-      }
-
-        console.log("Unity instance created:", unityInstance);
-      }).catch((error) => {
-        console.error("Error while creating Unity instance:", error);
-      });
     </script>
+
+<input type="button" value="Capacity Chart" id="MyButton" >
     
   </body>
 </html>
