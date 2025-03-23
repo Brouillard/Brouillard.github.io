@@ -14,7 +14,7 @@
                 let user = window.Telegram.WebApp.initDataUnsafe.user;  // Получаем данные пользователя
              //   const username = user ? user.username : 'Неизвестный';  // Если есть username, отображаем его, иначе 'Неизвестный'
 
-                let jsonUser = JSON.stringify(userData);
+                let jsonUser = JSON.stringify(user);
                 console.log("Telegram User Data:", jsonUser);
 
                 // Отображаем username в элементе с id 'usernameDisplay'
