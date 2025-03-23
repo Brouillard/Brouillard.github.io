@@ -21,7 +21,8 @@
 
     function SendMessageToUnity(data) {
         if (typeof gameInstance !== 'undefined') {
-            gameInstance.SendMessage('TelegramManager', 'OnUserDataReceived', data);
+            gameInstance.SendMessage('GameManger', 'OnUserDataReceived', data);
+      //      unityInstance.SendMessage('YandexSDK', 'OnInterstitialShown');
         }
     }
 </script>
