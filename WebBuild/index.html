@@ -11,11 +11,11 @@
         // Функция для получения и отображения никнейма пользователя
         function getTelegramUsername() {
             if (window.Telegram && window.Telegram.WebApp) {
-                const user = window.Telegram.WebApp.initDataUnsafe;  // Получаем данные пользователя
-                const username = user ? user.username : 'Неизвестный';  // Если есть username, отображаем его, иначе 'Неизвестный'
+                const user = window.Telegram.WebApp.initDataUnsafe.user;  // Получаем данные пользователя
+             //   const username = user ? user.username : 'Неизвестный';  // Если есть username, отображаем его, иначе 'Неизвестный'
 
                 // Отображаем username в элементе с id 'usernameDisplay'
-                document.getElementById('usernameDisplay').textContent = `Никнейм: ${username}`;
+                document.getElementById('usernameDisplay').textContent = `Никнейм: ${user.username}`;
             } else {
                 console.log('Telegram WebApp API не доступен.');
                 alert('Ошибка: Telegram WebApp API не доступен.');
