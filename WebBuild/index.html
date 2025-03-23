@@ -40,9 +40,6 @@
       }).then((unityInstance) => {
         // Используйте unityInstance для взаимодействия с экземпляром Unity после его инициализации
 
-
-window.Telegram.WebApp.expand(); // Разворачивает Mini App
-
       function getTelegramUserData() {
         let userData = window.Telegram.WebApp.initDataUnsafe.user;
         if (userData) {
