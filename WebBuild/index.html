@@ -24,7 +24,7 @@
         document.body.style.textAlign = "left";
       }
 
-      createUnityInstance(document.querySelector("#unity-canvas"), {
+      const intance = createUnityInstance(document.querySelector("#unity-canvas"), {
         dataUrl: "Build/WebBuild.data",
         frameworkUrl: "Build/WebBuild.framework.js",
         codeUrl: "Build/WebBuild.wasm",
@@ -35,16 +35,6 @@
         // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       });
-    </script>
-
-
-	<div id="unityContainer"></div>
-    
-    <!-- Подключаем Unity WebGL загрузчик -->
-    <script>
-        var gameInstance = UnityLoader.instantiate("unityContainer", "Build/WebBuild.loader.js", {
-            onProgress: UnityProgress
-        });
     </script>
 	
 	
@@ -62,9 +52,9 @@
     }
 
     function SendMessageToUnity(data) {
-        if (typeof gameInstance !== 'undefined') {
-            gameInstance.SendMessage('GameManager', 'OnUserDataReceived', data);
-        }
+   //     if (typeof gameInstance !== 'undefined') {
+            intance.SendMessage('GameManager', 'OnUserDataReceived', data);
+    //    }
     }
 </script>
 	
