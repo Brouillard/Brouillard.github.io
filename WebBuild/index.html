@@ -1,34 +1,36 @@
 <!DOCTYPE html>
-<html lang="en-us">
-  <head>
-    <meta charset="utf-8">
-    <title>Unity WebGL Player | CONTAINERS_GAME</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegram Mini App - Get Username</title>
 
-<!-- Подключаем Telegram Web App -->
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-
-  </head>
-  <body>
     <script>
+        // Функция для получения и отображения никнейма пользователя
+        function getTelegramUsername() {
+            if (window.Telegram && window.Telegram.WebApp) {
+                const user = window.Telegram.WebApp.initDataUnsafe;  // Получаем данные пользователя
+                const username = user ? user.username : 'Неизвестный';  // Если есть username, отображаем его, иначе 'Неизвестный'
 
- $(document).ready(function(){
-    $('#MyButton').click(function(){
-       getTelegramUserData();
-    });
-  });
-
-      function getTelegramUserData() {
-        let userData = window.Telegram.WebApp.initDataUnsafe.user;
-        if (userData) {
-            let jsonUser = JSON.stringify(userData);
-            console.log("Telegram User Data:", jsonUser);
-         //   SendMessageToUnity(jsonUser);
+                // Отображаем username в элементе с id 'usernameDisplay'
+                document.getElementById('usernameDisplay').textContent = `Никнейм: ${username}`;
+            } else {
+                console.log('Telegram WebApp API не доступен.');
+                alert('Ошибка: Telegram WebApp API не доступен.');
+            }
         }
-      }
-
     </script>
+</head>
+<body>
 
-<input type="button" value="Capacity Chart" id="MyButton" >
-    
-  </body>
+    <h1>Telegram Mini App</h1>
+    <p>Нажмите кнопку для получения вашего никнейма в Telegram.</p>
+
+    <!-- Кнопка для получения никнейма -->
+    <button onclick="getTelegramUsername()">Получить никнейм</button>
+
+    <!-- Место для отображения никнейма -->
+    <p id="usernameDisplay">Здесь будет ваш никнейм.</p>
+
+</body>
 </html>
