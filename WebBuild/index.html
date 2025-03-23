@@ -9,9 +9,10 @@
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
  
-	function getTelegramData() {
+	function getTelegramUserData() {
             if (window.Telegram && window.Telegram.WebApp) {
                 let user = window.Telegram.WebApp.initDataUnsafe.user;
+		    console.log(user.username);
 				if (user) {
 					let jsonUser = JSON.stringify(user);
 					SendMessageToUnity(jsonUser);
