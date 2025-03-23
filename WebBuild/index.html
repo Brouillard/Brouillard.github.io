@@ -13,10 +13,10 @@
             if (window.Telegram && window.Telegram.WebApp) {
                 let user = window.Telegram.WebApp.initDataUnsafe.user;
 		    console.log(user.username);
-				if (user) {
-					let jsonUser = JSON.stringify(user);
-					SendMessageToUnity(jsonUser);
-				}
+			//	if (user) {
+			//		let jsonUser = JSON.stringify(user);
+			//		SendMessageToUnity(jsonUser);
+			//	}
 
           //  document.getElementById('usernameDisplay').textContent = `Никнейм: ${user.username}`;
 } else {
@@ -56,12 +56,6 @@
         // matchWebGLToCanvasSize: false, // Uncomment this to separately control WebGL canvas render size and DOM element size.
         // devicePixelRatio: 1, // Uncomment this to override low DPI rendering on high DPI displays.
       }).then((instance) => {
-	
-	function SendMessageToUnity(data) {
-		if (instance) {
-		  instance.SendMessage('GameManager', 'OnUserDataReceived', data);
-		}
-	}
 	  
     console.log("Unity instance initialized!");
   }).catch((error) => {
