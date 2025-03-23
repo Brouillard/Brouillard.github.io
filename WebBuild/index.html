@@ -3,6 +3,10 @@
   <head>
     <meta charset="utf-8">
     <title>Unity WebGL Player | CONTAINERS_GAME</title>
+
+<!-- Подключаем Telegram Web App -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
   </head>
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
     <canvas id="unity-canvas" width="720" height="1280" tabindex="-1" style="width: 720px; height: 1280px; background: #231F20"></canvas>
@@ -35,16 +39,9 @@
         productVersion: "0.1",
       }).then((unityInstance) => {
         // Используйте unityInstance для взаимодействия с экземпляром Unity после его инициализации
-        console.log("Unity instance created:", unityInstance);
-      }).catch((error) => {
-        console.error("Error while creating Unity instance:", error);
-      });
-    </script>
 
-    <!-- Подключаем Telegram Web App -->
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script>
-      window.Telegram.WebApp.expand(); // Разворачивает Mini App
+
+window.Telegram.WebApp.expand(); // Разворачивает Mini App
 
       function getTelegramUserData() {
         let userData = window.Telegram.WebApp.initDataUnsafe.user;
@@ -56,10 +53,15 @@
       }
 
       function SendMessageToUnity(data) {
-        if (typeof instance !== 'undefined' && instance.SendMessage) {
-            instance.SendMessage('GameManager', 'OnUserDataReceived', data);
+        if (typeof unityInstance !== 'undefined' && instance.SendMessage) {
+            unityInstance.SendMessage('GameManager', 'OnUserDataReceived', data);
         }
       }
+
+        console.log("Unity instance created:", unityInstance);
+      }).catch((error) => {
+        console.error("Error while creating Unity instance:", error);
+      });
     </script>
     
   </body>
