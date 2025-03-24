@@ -7,20 +7,26 @@
 
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script>
-        // ЧТЕНИЕ TG DATA
+        let unityInstance = null; // Глобальная переменная для хранения экземпляра Unity
+
+        function SendDataToUnity(data) {
+            if (unityInstance) {
+                unityInstance.SendMessage('GameManager', 'OnUserDataReceived', data);
+            } else {
+                console.warn("Unity instance is not initialized yet.");
+            }
+        }
+
         function getTelegramUserData() {
             if (window.Telegram && window.Telegram.WebApp) {
                 let user = window.Telegram.WebApp.initDataUnsafe?.user;
                 if (user) {
                     console.log("Telegram username:", user.username);
+                    
+                    let jsonUser = JSON.stringify(user);
+                    SendDataToUnity(jsonUser);
 
-                    // ОТПРАВКА В UNITY TG DATA
-                    if (user) {
-			                  let jsonUser = JSON.stringify(user);
-                        SendDataToUnity(jsonUser);
-                    }
-
-                    return JSON.stringify(user);
+                    return jsonUser;
                 } else {
                     console.warn("Пользовательские данные отсутствуют.");
                     return null;
@@ -31,7 +37,6 @@
             }
         }
 
-        // Делаем функцию глобальной
         window.getTelegramUserData = getTelegramUserData;
     </script>
   </head>
@@ -65,14 +70,7 @@
             productVersion: "0.1"
         }).then((instance) => {
             console.log("Unity instance initialized!");
-
-          // ОТПРАВКА В UNITY TG DATA
-            function SendDataToUnity(data) {
-            		if (instance) {
-            		  instance.SendMessage('GameManager', 'OnUserDataReceived', data);
-            		}
-            }
-          
+            unityInstance = instance; // Сохраняем экземпляр Unity
         }).catch((error) => {
             console.error("Error initializing Unity:", error);
         });
