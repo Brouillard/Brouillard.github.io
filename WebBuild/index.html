@@ -9,8 +9,8 @@
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
  
-	function getTelegramUserData() {
-            if (window.Telegram && window.Telegram.WebApp) {
+function getTelegramUserData() {
+	if (window.Telegram && window.Telegram.WebApp) {
                 let user = window.Telegram.WebApp.initDataUnsafe.user;
 		    console.log(user.username);
 			//	if (user) {
@@ -22,6 +22,8 @@
 } else {
     console.log('Telegram WebApp API не доступен.');
 }
+
+window.getTelegramUserData = getTelegramUserData;
 
 </script>
 	
