@@ -11,7 +11,7 @@
 
         function SendDataToUnity(data) {
             if (unityInstance) {
-                unityInstance.SendMessage('GameManger', 'OnUserDataReceived', data);
+                unityInstance.SendMessage('GameManager', 'OnUserDataReceived', data);
             } else {
                 console.warn("Unity instance is not initialized yet.");
             }
