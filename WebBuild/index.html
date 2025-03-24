@@ -10,6 +10,8 @@
 <script>
  
 function getTelegramUserData() {
+
+window.onload = function() {
 	if (window.Telegram && window.Telegram.WebApp) {
                 let user = window.Telegram.WebApp.initDataUnsafe.user;
 		    console.log(user.username);
@@ -19,6 +21,8 @@ function getTelegramUserData() {
 			//	}
 
           //  document.getElementById('usernameDisplay').textContent = `Никнейм: ${user.username}`;
+
+}
 } else {
     console.log('Telegram WebApp API не доступен.');
 }
