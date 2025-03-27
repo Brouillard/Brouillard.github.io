@@ -56,6 +56,12 @@
     window.Vibrate = Vibrate;
 
   // ВИБРАЦИЯ ------------
+
+// Обработчик клика по документу для вибрации
+      document.body.addEventListener('click', function () {
+          console.log('👆 Клик по экрану! Разрешаем вибрацию');
+          Vibrate(300); // Длительность вибрации в миллисекундах
+      });
 </script> 
     
   </head>
