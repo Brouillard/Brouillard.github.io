@@ -55,12 +55,6 @@
             }
         }
 
-        // Пример вызова вибрации при клике
-        document.body.addEventListener('click', function () {
-            console.log("👆 Клик по экрану! Разрешаем вибрацию.");
-            Vibrate(300); // Вибрация длительностью 300 мс
-        });
-
 window.Vibrate = Vibrate;
 
 </script>
@@ -85,6 +79,15 @@ window.Vibrate = Vibrate;
 
     <script src="Build/WebBuild.loader.js"></script>
     <script>
+
+// Убедимся, что код выполняется после полной загрузки DOM
+document.addEventListener('DOMContentLoaded', function() {
+            // Обработчик клика по документу для вибрации
+            document.body.addEventListener('click', function () {
+                console.log('👆 Клик по экрану! Разрешаем вибрацию');
+                Vibrate(300); // Длительность вибрации в миллисекундах
+            });
+});
 
         if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
             var meta = document.createElement('meta');
