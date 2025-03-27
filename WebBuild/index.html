@@ -41,14 +41,22 @@
         window.getTelegramUserData = getTelegramUserData;
     </script>
 
-    <script> 
-function Vibrate(duration) {
-    if ("vibrate" in navigator) {
-        navigator.vibrate(duration);
+<script> 
+  // ВИБРАЦИЯ ------------
+    function Vibrate(duration) {
+        if ("vibrate" in navigator && typeof navigator.vibrate === "function") {
+            navigator.vibrate(duration);
+            console.log("Вибрация на " + duration + " мс");
+        } else {
+            console.warn("Вибрация не поддерживается на этом устройстве.");
+        }
     }
-window.Vibrate = Vibrate;
-}
-</script> <!-- VIBRATION !-->
+    
+    // Делаем функцию глобально доступной
+    window.Vibrate = Vibrate;
+
+  // ВИБРАЦИЯ ------------
+</script> 
     
   </head>
 
