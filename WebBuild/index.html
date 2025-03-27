@@ -40,24 +40,6 @@
 
         window.getTelegramUserData = getTelegramUserData;
     </script>
-
-<script> 
-  // ВИБРАЦИЯ ------------
-    function Vibrate(duration) {
-console.log("Вибрация запустилась бы но..........");
-        if ("vibrate" in navigator && typeof navigator.vibrate === "function") {
-            navigator.vibrate(duration);
-            console.log("Вибрация на " + duration + " мс");
-        } else {
-            console.warn("Вибрация не поддерживается на этом устройстве.");
-        }
-    }
-    
-    // Делаем функцию глобально доступной
-    window.Vibrate = Vibrate;
-
-  // ВИБРАЦИЯ ------------
-</script> 
     
   </head>
 
@@ -79,15 +61,6 @@ console.log("Вибрация запустилась бы но..........");
 
     <script src="Build/WebBuild.loader.js"></script>
     <script>
-
- // Убедимся, что код выполняется после полной загрузки DOM
-        document.addEventListener('DOMContentLoaded', function() {
-            // Обработчик клика по документу для вибрации
-            document.body.addEventListener('touchstart', function () {
-                console.log('👆 Клик по экрану! Разрешаем вибрацию');
-                Vibrate(300); // Длительность вибрации в миллисекундах
-            });
-        });
 
         if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)) {
             var meta = document.createElement('meta');
