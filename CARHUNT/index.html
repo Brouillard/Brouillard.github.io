@@ -9,6 +9,8 @@
     <script>
         let unityInstance = null; // Глобальная переменная для хранения экземпляра Unity
 
+        window.Telegram.WebApp.ready(); // MB DELETE?
+
         function SendDataToUnity(data) {
             if (unityInstance) {
                 unityInstance.SendMessage('GameManager', 'OnUserDataReceived', data);
@@ -40,6 +42,28 @@
 
         window.getTelegramUserData = getTelegramUserData;
     </script>
+
+<script>
+        
+        // Функция для вибрации
+        function Vibrate(duration) {
+            if ("vibrate" in navigator && typeof navigator.vibrate === "function") {
+                navigator.vibrate(duration);
+                console.log("Вибрация на " + duration + " мс");
+            } else {
+                console.warn("Вибрация не поддерживается на этом устройстве.");
+            }
+        }
+
+        // Пример вызова вибрации при клике
+        document.body.addEventListener('click', function () {
+            console.log("👆 Клик по экрану! Разрешаем вибрацию.");
+            Vibrate(300); // Вибрация длительностью 300 мс
+        });
+
+window.Vibrate = Vibrate;
+
+</script>
     
   </head>
 
