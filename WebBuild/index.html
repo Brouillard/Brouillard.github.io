@@ -83,7 +83,7 @@ console.log("Вибрация запустилась бы но..........");
  // Убедимся, что код выполняется после полной загрузки DOM
         document.addEventListener('DOMContentLoaded', function() {
             // Обработчик клика по документу для вибрации
-            document.body.addEventListener('click', function () {
+            document.body.addEventListener('touchstart', function () {
                 console.log('👆 Клик по экрану! Разрешаем вибрацию');
                 Vibrate(300); // Длительность вибрации в миллисекундах
             });
