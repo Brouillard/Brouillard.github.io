@@ -44,6 +44,7 @@
 <script> 
   // ВИБРАЦИЯ ------------
     function Vibrate(duration) {
+console.log("Вибрация запустилась бы но..........");
         if ("vibrate" in navigator && typeof navigator.vibrate === "function") {
             navigator.vibrate(duration);
             console.log("Вибрация на " + duration + " мс");
