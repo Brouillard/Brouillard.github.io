@@ -40,6 +40,16 @@
 
         window.getTelegramUserData = getTelegramUserData;
     </script>
+
+    <script> 
+function Vibrate(duration) {
+    if ("vibrate" in navigator) {
+        navigator.vibrate(duration);
+    }
+window.Vibrate = Vibrate;
+}
+</script> <!-- VIBRATION !-->
+    
   </head>
 
   <body style="text-align: center; padding: 0; border: 0; margin: 0;">
